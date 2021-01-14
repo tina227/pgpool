@@ -38,5 +38,5 @@ echo "${POSTGRES_USER}:"`${PGPOOL_BINARY_DIR}/pg_md5 ${POSTGRES_PASSWORD}` >> ${
 printenv | sed -nr "s/^PGPOOL_PARAMS_(.*)=(.*)/\L\1 = '\E\2'/p" >> ${PGPOOLCONF}
 
 # Start Pgpool-II
-${PGPOOL_BINARY_DIR}/pgpool -n -f ${PGPOOLCONF} -F ${PCP_CONF} -a ${POOL_HBA_CONF}
+${PGPOOL_BINARY_DIR}/pgpool -n -D -f ${PGPOOLCONF} -F ${PCP_CONF} -a ${POOL_HBA_CONF}
 
