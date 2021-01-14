@@ -24,9 +24,9 @@ RUN echo 'postgres:postgres' | chpasswd
 
 RUN cp -p ${PGPOOL_CONF_DIR}/pgpool.conf.sample-stream ${PGPOOLCONF}
 
-RUN mkdir /var/run/postgresql 2>/dev/null
-RUN mkdir /var/run/pgpool 2>/dev/null
-RUN mkdir /var/log/pgpool 2>/dev/null
+RUN if [ ! -d /var/run/postgresql ]; then mkdir /var/run/postgresql; fi
+RUN if [ ! -d /var/run/pgpool ]; then mkdir /var/run/pgpool; fi
+RUN if [ ! -d /var/log/pgpool ]; then mkdir /var/log/pgpool; fi
 
 RUN chown -R postgres:postgres ${PGPOOL_CONF_DIR} /var/run/postgresql /var/run/pgpool /var/log/pgpool
 
